@@ -11,7 +11,8 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button;
+    //Deklarasi
+    Button button, btnMove;
     EditText editText;
 
     @Override
@@ -19,14 +20,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Inisialisasi
         button = findViewById(R.id.button);
+        btnMove = findViewById(R.id.btnMove);
         editText = findViewById(R.id.editText);
+
+
+        //ACTION
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String url=editText.getText().toString();
-                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intent);
+            }
+        });
+
+        btnMove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ResultActivity.class);
+                startActivity(i);
             }
         });
 
